@@ -37,3 +37,5 @@ my $salvage_dev     = '/dev/sdb1';
 ./salvage_data.pl
 ```
 
+- undelete data into ``SALVAGED_DATA/RECOVERED_FILES/$(full-path-files)``
+- duplicated inode list into ``SALVAGED_DATA/SUSPECT_LIST.txt``
