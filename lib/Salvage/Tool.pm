@@ -16,8 +16,8 @@ sub exec_salvage {
 
     my $salvage_cmd = $self->salvage_bin . " --after " . $self->salvage_after . " --restore-directory=" . $self->salvage_dir . " --duplicate " . $self->salvage_dev . " > " . $self->salvage_log . " 2>&1";
 
-    $self->error_record(__PACKAGE__." salvage binary not found") if ! -f $self->salvage_bin;
-    $self->error_record(__PACKAGE__." salvage log found") if -f $self->salvage_log;
+    $self->error_record(__PACKAGE__." salvage binary ". $self->salvage_bin ." not found") if ! -f $self->salvage_bin;
+    $self->error_record(__PACKAGE__." salvage log " . $self->salvage_log . " found") if -f $self->salvage_log;
     $self->exec_command($salvage_cmd, 0);
 
 }

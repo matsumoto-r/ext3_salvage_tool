@@ -69,13 +69,13 @@ DIST_ARCHIVES = $(distdir).tar.gz
 GZIP_ENV = --best
 distuninstallcheck_listfiles = find . -type f -print
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /root/DEV/develop-code/extundelete-0.2.0-duplicated-check/missing --run aclocal-1.9
+ACLOCAL = ${SHELL} /root/DEV/ext3_salvage_tool/tools/missing --run aclocal-1.9
 AMDEP_FALSE = #
 AMDEP_TRUE = 
-AMTAR = ${SHELL} /root/DEV/develop-code/extundelete-0.2.0-duplicated-check/missing --run tar
-AUTOCONF = ${SHELL} /root/DEV/develop-code/extundelete-0.2.0-duplicated-check/missing --run autoconf
-AUTOHEADER = ${SHELL} /root/DEV/develop-code/extundelete-0.2.0-duplicated-check/missing --run autoheader
-AUTOMAKE = ${SHELL} /root/DEV/develop-code/extundelete-0.2.0-duplicated-check/missing --run automake-1.9
+AMTAR = ${SHELL} /root/DEV/ext3_salvage_tool/tools/missing --run tar
+AUTOCONF = ${SHELL} /root/DEV/ext3_salvage_tool/tools/missing --run autoconf
+AUTOHEADER = ${SHELL} /root/DEV/ext3_salvage_tool/tools/missing --run autoheader
+AUTOMAKE = ${SHELL} /root/DEV/ext3_salvage_tool/tools/missing --run automake-1.9
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -91,7 +91,7 @@ DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
-EGREP = grep -E
+EGREP = /bin/grep -E
 EU_CFLAGS =  -g -O2
 EU_CXXFLAGS =  -g -O2
 EU_OPTFLAGS =  -O3
@@ -99,6 +99,7 @@ EU_OPTXXFLAGS =  -O3
 EU_WCFLAGS =  -W -Wall -Wredundant-decls -Wshadow -Wpointer-arith -Wwrite-strings
 EU_WCXXFLAGS =  -W -Wall -Wredundant-decls -Wshadow -Wpointer-arith -Wwrite-strings -Woverloaded-virtual -Weffc++
 EXEEXT = 
+GREP = /bin/grep
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
@@ -107,13 +108,14 @@ LDFLAGS =
 LIBOBJS = 
 LIBS = -lcom_err -lext2fs 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /root/DEV/develop-code/extundelete-0.2.0-duplicated-check/missing --run makeinfo
+MAKEINFO = ${SHELL} /root/DEV/ext3_salvage_tool/tools/missing --run makeinfo
 OBJEXT = o
 PACKAGE = extundelete
 PACKAGE_BUGREPORT = extundelete.sourceforge.net
 PACKAGE_NAME = extundelete
 PACKAGE_STRING = extundelete 0.2.0
 PACKAGE_TARNAME = extundelete
+PACKAGE_URL = 
 PACKAGE_VERSION = 0.2.0
 PATH_SEPARATOR = :
 SET_MAKE = 
@@ -122,7 +124,6 @@ STRIP =
 VERSION = 0.2.0
 ac_ct_CC = gcc
 ac_ct_CXX = g++
-ac_ct_STRIP = 
 am__fastdepCC_FALSE = #
 am__fastdepCC_TRUE = 
 am__fastdepCXX_FALSE = #
@@ -134,20 +135,27 @@ am__tar = ${AMTAR} chof - "$$tardir"
 am__untar = ${AMTAR} xf -
 bindir = ${exec_prefix}/bin
 build_alias = 
-datadir = ${prefix}/share
+datadir = ${datarootdir}
+datarootdir = ${prefix}/share
+docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
+dvidir = ${docdir}
 exec_prefix = ${prefix}
 host_alias = 
+htmldir = ${docdir}
 includedir = ${prefix}/include
-infodir = ${prefix}/info
-install_sh = /root/DEV/develop-code/extundelete-0.2.0-duplicated-check/install-sh
+infodir = ${datarootdir}/info
+install_sh = /root/DEV/ext3_salvage_tool/tools/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
+localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
-mandir = ${prefix}/man
+mandir = ${datarootdir}/man
 mkdir_p = mkdir -p --
 oldincludedir = /usr/include
-prefix = /root/DEV/develop-code/extundelete-0.2.0-duplicated-check
+pdfdir = ${docdir}
+prefix = /root/DEV/ext3_salvage_tool/tools
 program_transform_name = s,x,x,
+psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 sysconfdir = ${prefix}/etc
@@ -387,7 +395,7 @@ distdir: $(DISTFILES)
 	      || exit 1; \
 	  fi; \
 	done
-	-find $(distdir) -type d ! -perm -777 -exec chmod a+rwx {} \; -o \
+	-find $(distdir) -type d ! -perm -755 -exec chmod a+rwx,go+rx {} \; -o \
 	  ! -type d ! -perm -444 -links 1 -exec chmod a+r {} \; -o \
 	  ! -type d ! -perm -400 -exec chmod a+r {} \; -o \
 	  ! -type d ! -perm -444 -exec $(SHELL) $(install_sh) -c -m a+r {} {} \; \

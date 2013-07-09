@@ -2,3 +2,14 @@ GPATH
 GRTAGS
 GTAGS
 
+tools/autom4te.cache/output.1
+tools/autom4te.cache/traces.1
+tools/bin/
+tools/config.h.in~
+tools/config.log
+tools/config.status
+tools/src/extundelete
+tools/src/extundelete-block.o
+tools/src/extundelete-extundelete.o
+tools/src/extundelete-insertionops.o
+
