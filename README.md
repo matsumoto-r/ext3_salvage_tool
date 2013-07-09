@@ -9,6 +9,9 @@ implemented duplicate check to extundelete.
 ```
 cd tools
 yum -y install e2fsprogs-devel
+aclocal
+automake
+autoconf
 ./configure --prefix=`pwd`
 make
 make install
