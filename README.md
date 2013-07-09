@@ -26,8 +26,11 @@ vi salvage_data.pl
 ```perl
 # salvage parameter
 # 2013/7/09 12:00 == 1373338800
+# $salvage_after: only process entries deleted on or after 'dtime'.
+# $salvage_dir:   target directory for undelete
+# $salvage_dev:   target device-file
 my $salvage_after   = '1373338800';
-my $salvage_dir     = '/';
+my $salvage_dir     = '/tmp';
 my $salvage_dev     = '/dev/sdb1';
 ```
 
