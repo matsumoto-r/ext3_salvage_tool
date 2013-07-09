@@ -34,7 +34,7 @@ our $CDIR           = Cwd::getcwd;
 
 # salvage parameter
 # 2013/7/09 12:00 == 1373338800
-my $salvage_after   = '1373348313';
+my $salvage_after   = '1373338800';
 my $salvage_dir     = '/tmp';
 my $salvage_dev     = '/dev/sdb1';
 
@@ -104,7 +104,7 @@ create_salvage_data($recover_dir, $extundelete_dir);
 
 # delete RECOVERD_FILES and rescue.txt
 $SALVAGE->info_record(__PACKAGE__." clean up recovered files start");
-#unlink($salvage_log) if -f $salvage_log;
+unlink($salvage_log) if -f $salvage_log;
 rmtree($extundelete_dir) if -d $extundelete_dir;
 
 $SALVAGE->info_record(__PACKAGE__." $SCRIPT($VERSION) end");
