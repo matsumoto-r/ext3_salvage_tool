@@ -37,6 +37,7 @@ my $salvage_dev     = '/dev/sdb1';
 - run
 
 ```
+mount -o remount,ro $(salvage_dev)
 ./salvage_data.pl
 ```
 
